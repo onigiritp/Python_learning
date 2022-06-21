@@ -9,9 +9,12 @@ Created on Wed Mar 13 13:28:06 2019
 from django.urls import path
 
 from . import views
+from . import views2
 
 
 urlpatterns=[
+        path("test/",views2.hello, name = "hello"),
+
         path("",views.index, name = "index"),
         #ログアウト処理
         path("logout/",views.logout, name = "logout"),
