@@ -1,0 +1,56 @@
+#titlebar {
+	background-color: #600000;
+	color: #FFFFFF;
+}
+
+.btn-danger {
+	margin-top: 10%;
+	background-color: #600000 !important;
+	border-color: #600000 !important;
+	background-color: #600000 !important;
+}
+
+.btn-danger:hover {
+	background-color: #a20000 !important;
+	border-color: #a20000 !important;
+}
+
+input{
+	margin-top: 20px !important;
+	margin-bottom: 20px !important;
+}
+
+label{
+	margin-top: 20px !important;
+	margin-bottom: 20px !important;
+	margin-right: 20px !important;
+}
+
+table {
+	margin: auto;
+}
+
+
+th td {
+	text-align: center;
+}
+
+a.no-decoration{
+	text-decoration-line: none !important;
+	text-decoration-color: #000000 !important;
+	color:	inherit;
+}
+
+a.no-decoration:link{
+	text-decoration-line: none !important;
+	text-decoration-color: #000000 !important;
+}
+
+.card-img-top{
+	border-radius: 0;
+	margin-top: 0;
+}
+
+html {
+ overflow-y: scroll;
+}

@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+h1 {
+    color: #FCA205;
+}
+
+#login-table-wrapper {
+	background-color: rgba(240,240,240,0.2);
+	margin-top: 5%;
+	margin-right: 35%;
+	margin-left: 35%;
+	padding-top: 4%;
+	padding-bottom: 3%;
+	padding-right: 5%;
+	padding-left: 5%;
+	text-align : center;
+	border-radius: 10px 10px;
+	text-align: center;
+}
+
+#login-page-background {
+	background-image: url("6.jpg");
+	background-size: cover;
+}
+
+#create-user-trigger-wrapper{
+	width:  100%;
+	margin-left: 1%;
+}

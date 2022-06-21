@@ -1,0 +1,78 @@
+
+{% load static %}
+
+<html>
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/MainPage.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/LoginPage.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/GeneralStyle.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+
+<script src="https://code.jquery.com/jquery.js"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+  <script>
+    //フェード用
+		$(function() {
+	  	$('body').hide().fadeIn(750);
+		});
+  </script>
+
+<body id="login-page-background">
+
+
+
+	<nav class="navbar navbar-default sticky-top" id="titlebar">
+		<h3>samplesns</h3>
+	</nav>
+
+	<div class="container-fluid">
+		<div id="login-table-wrapper">
+       		<form action="{%url 'home' %}" method="post">
+				{% csrf_token %}
+            	<!--アカウントとパスワードを入力-->
+				{{form}}
+				<input type="submit" value="送信" class="btn btn-danger">
+			</form>
+			<!-- 新規登録ボタン -->
+			<div id="create-user-trigger-wrapper">
+				<a href="#" class="link-style-btn" data-toggle="modal" data-target="#basicModal-create-user" id="create-user-trigger-button">新規ユーザー登録</a>
+
+				<font color="red"><!--新規登録エラー--></font>
+			</div>
+		</div>
+		<!-- 新規登録モーダル-->
+		<div class="modal fade" id="basicModal-create-user" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+			<div class="modal-dialog">
+			  <div class="modal-content">
+				<div class="modal-header">
+				  <h4 id="post-item-title">新規ユーザーの登録</h4>
+				  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				</div>
+				
+				<form action="" method="post" enctype="multipart/form-data">
+				  {% csrf_token %}
+				  <!-- 新規ユーザー登録フォーム -->
+				  <br>
+				  <input type="submit" value="新規登録" class="btn btn-danger" id="upload-button">
+				</form>
+			  </div>
+			</div>
+		  </div>
+		<script>
+			function checkPassword(re_pw){
+			  // 入力値取得
+			  var input1 = document.getElementById("id_pw");
+			  var input2 = document.getElementById("id_re_pw")
+			  // パスワード比較
+			  if(input1.value != input2.value){
+				re_pw.setCustomValidity("入力値が一致しません。");
+			  }else{
+				re_pw.setCustomValidity('');
+			  }
+			}
+		  </script>
+	</div>
+
+</body>
+</html>

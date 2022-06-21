@@ -1,0 +1,90 @@
+{% load static %}
+
+
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/GeneralStyle.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/MainPage.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/TrendPage.css' %}">
+
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+</head>
+
+<body>
+  <nav class="navbar navbar-default sticky-top" id="titlebar">
+    <a href="{%url 'home' %}" class="no-decoration">
+      <h3>samplesns</h3>
+    </a>
+
+    <div id="option-wrapper">
+      <a href="{%url 'logout' %}">
+        <button type="button" id="white-button" class="btn btn-primary">
+          ログアウト
+        </button>
+      </a>
+    </div>
+  </nav>
+  <!-- サブナビゲーションバー -->
+  <div class="container-fluid">
+
+    <div id="sub-bar-wrapper">
+
+      <!-- 画像を投稿する！ボタン -->
+      <div id="upload-trigger-wrapper">
+        <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#basicModal"
+          id="upload-trigger-button">画像を投稿する！</a>
+      </div>
+
+      <!-- プロフィール画像 -->
+      <div id="profile-image-wrapper">
+        <a href="{%url 'mypage' %}">
+          <button type="button" id="white-button" class="btn btn-primary">
+            <div id="username-wrapper">
+              {% if request.session.user.samne == 'None' %}
+              <img src="{% static 'loadingimgs/anonymous-user.png' %}" width="50" height="50" class="rounded-circle"
+                id="profile-image">
+              {% else %}
+              <img src="/static/{{user.samne}}" width="50" height="50" class="rounded-circle" id="profile-image">
+              {% endif %}
+              {{ request.session.user.account_name}}
+
+            </div>
+          </button>
+        </a>
+      </div>
+
+      <!--　画像投稿用モーダル画面 -->
+
+      <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal"
+        aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 id="post-item-title">画像の投稿</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+
+            <form action="{%url 'upload' %}" method="post" enctype="multipart/form-data">
+              <div class="modal-body">
+                {% csrf_token %}
+                {{upload}}
+                <input type="submit" value="アップロード" class="btn btn-primary" id="upload-button">
+
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2>トレンドワード</h2>
+    <ol class="trend-wrapper">
+      <!--トレンドワードの表示-->
+    </ol>
+</body>
+
+</html>

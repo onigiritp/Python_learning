@@ -1,0 +1,104 @@
+#user-page-profile-img{
+  border-color:	#600000;
+  border-style:	solid;
+  border-width: 1px;
+  float:  left;
+}
+
+#user-info-wrapper{
+  margin-top: 2%;
+  margin-left: 25%;
+  margin-bottom: 6.5%;
+}
+
+.btn-danger{
+  background-color:	#600000 !important;
+  color:	#FFFFFF !important;
+  border-color:	#600000 !important;
+  margin-top: 0 !important;
+}
+
+.btn-danger:hover{
+  background-color: #cebaba !important;
+  color: #600000 !important;
+  border-color: #cebaba !important;
+}
+
+#search-user-trigger-button{
+  margin-top: 1% !important;
+  float:left !important;
+}
+
+#change-thumbnail-button{
+  margin-top: 1% !important;
+  margin-left: 5px;
+  float:left;
+}
+
+#change-message-button{
+  margin-top: 1% !important;
+  margin-left: 5px;
+  float:left;
+}
+
+#user-introduce-wrapper{
+  width:  100%;
+  margin-left: 20px;
+}
+
+#user-introduce{
+  width:  100%;
+  word-break: break-all;
+}
+
+#search-user-button{
+  margin-top: 4.25% !important;
+  margin-left: 15%;
+}
+
+
+#user-details-wrapper{
+  margin-left: 10%;
+}
+
+.table-username{
+  width: 30%;
+}
+
+#follow-button{
+  margin-top: 1% !important;
+  margin-left: 5px;
+}
+
+.no-post-yet{
+	margin-top: 10%;
+}
+
+#friend-info-wrapper{
+  margin-top: 2%;
+  margin-left: 25%;
+  margin-bottom: 2%;
+}
+
+#user-name-h2{
+  display:inline;
+}
+
+#useranalytics-wrapper{
+  float: none;
+  margin: inherit;
+  position: absolute;
+  transform: translate(170%);
+}
+
+
+
+@media (min-width: 576px){
+  .modal-dialog {
+    max-width: 1000px !important;
+    margin: 1.75rem auto;
+  }
+}
+*[disabled] {
+  pointer-events: none !important;
+}

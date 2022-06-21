@@ -1,0 +1,104 @@
+
+{% load static %}
+
+
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/GeneralStyle.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/MainPage.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/TagSearch.css' %}">
+
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+  <script>
+    //フェード用
+		$(function() {
+	  	$('body').hide().fadeIn(750);
+		});
+
+    //ユーザを検索したとき、モーダル画面に戻ってこられるようにセッションストレージにフラグを入れておく
+    function userSearchSubmit(){
+      sessionStorage.searchUserFlag = 'true';
+      $('userSearchForm').submit();
+    }
+
+    //ロード時、フラグがtrueならモーダル画面を表示、表示後にfalseに戻す
+    window.onload = function(){
+      if(sessionStorage.searchUserFlag == 'true'){
+        $('#basicModal-search-user').modal('show');
+        sessionStorage.searchUserFlag = 'false';
+      }
+    }
+    </script>
+</head>
+
+  <body>
+
+    <nav class="navbar navbar-default sticky-top" id="titlebar">
+        <a href = "{%url 'home' %}" class="no-decoration">
+          <h3>samplesns</h3>
+        </a>
+
+
+      <div id="option-wrapper">
+        <a href ="{%url 'logout' %}">
+            <button type="button" id="white-button" class="btn btn-primary">
+              ログアウト
+            </button>
+        </a>
+      </div>
+    </nav>
+
+    <div id="search-key-wrapper">
+      <h4>#{{key}} の検索結果</h4>
+    </div>
+
+    <!-- 写真一枚分のカード -->
+    <div align="center" class="user-photolist-wrapper">
+      {% for post in posts %}
+        <div class="card">
+            <img class="card-img-top" src="/static/{{post.image}}"  width="400" height="225">
+           <div class="card-body">
+            <div class="card-text">
+            <div id="posted-time">
+                  <p>Posted on {{post.time}}</p>
+            </div>
+            <div id="photo-info">
+              <h6 id="small-posted-user-name"> {{post.user}}</h6> &nbsp; {{post.text}}<br>
+              {% for tag in post.tag %}
+              <div id="hashtags">#{{tag}}</div>
+              {% endfor %}
+            </div>
+            </div>
+              <div id="good-button-wrapper">
+
+              {% if request.session.user.id in post.good %}
+                <button type="submit" class="btn btn-primary" id="good-button" disabled>
+                  ワッショイ！
+                   
+                </button>
+              {% else %}
+                  <!-- 画像の持ち主  画像のファイル名、-->
+                   
+                 {#request.session.user.id#}
+                 {#post.user#}
+                 
+                
+                  <a href ="{% url 'good' post.user post.fileName request.session.user.id %}">
+                    <button type="button" class="btn btn-primary" id="good-button">
+                      ワッショイ！
+                    </button>
+                  </a>
+              {% endif %}
+
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  <!-- ここまで -->
+  </body>
+</html>

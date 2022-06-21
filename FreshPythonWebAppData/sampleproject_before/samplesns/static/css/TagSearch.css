@@ -1,0 +1,9 @@
+#search-key-wrapper{
+  text-align: center;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+*[disabled] {
+  pointer-events: none !important;
+}
